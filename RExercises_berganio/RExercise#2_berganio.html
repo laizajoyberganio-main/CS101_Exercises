@@ -392,9 +392,10 @@ a%%b</code></pre>
 2^10</code></pre>
 <pre><code>## [1] 1024</code></pre>
 <p>[1] 1024</p>
-<p><strong>Question #1:</strong> Run 17 / 5, 17 %% 5, and 17 %/% 5 side
-by side. In your own words, explain how these three results relate to
-each other mathematically.</p>
+<p><strong>Question #1:</strong> Run <code>17 / 5</code>,
+<code>17 %% 5</code>, and <code>17 %/% 5</code> side by side. In your
+own words, explain how these three results relate to each other
+mathematically.</p>
 <p>The ‘/’ operator performs division, ‘%%’ performs modulo which gets
 the remainder of the values, and the ‘%/%’ is the integer division
 operator which divides the values but only takes the integer</p>
@@ -467,20 +468,20 @@ mode(x)</code></pre>
 <code>y &lt;- 42L</code> look almost identical, but
 <code>typeof(x)</code> and <code>typeof(y)</code> give different
 answers. Explain the difference in your own words.</p>
-<p><code>typeof()</code> and <code>typeof(y)</code> give different
+<p><code>typeof(x)</code> and <code>typeof(y)</code> give different
 answers because in x, 42 is treated as a decimal, while in y, 42 is
 treated as an integer due to the ‘L’ suffix. The ‘L’ suffix forces R to
-store the number as a whole integer. If the stored value doesnt have an
+store the number as a whole integer. If the stored value doesn’t have an
 L, R stores the number as a decimal.</p>
 <p><strong>Question #4:</strong> Is <code>typeof()</code> ever different
 from <code>class()</code> and from <code>mode()</code> for the same
 object? Look at your results above and explain any case where this
 happens (or, if you did not see one, explain what you would expect for a
-<code>matrix</code> or <code>factor</code>).<br />
-Yes. In x, its type is a “double”, but its class and mode are “numeric”.
-This is because typeof() identifies the objects’ storage type, class()
-identifies the object class, and mode() identifies its general data
-category.</p>
+<code>matrix</code> or <code>factor</code>).</p>
+<p>Yes. In x, its type is a “double”, but its class and mode are
+“numeric”. This is because <code>typeof()</code> identifies the objects’
+storage type, <code>class()</code> identifies the object class, and
+<code>mode()</code> identifies its general data category.</p>
 <hr />
 </div>
 <div id="part-c-type-conversion" class="section level3">
@@ -524,13 +525,15 @@ as.numeric(bad_string)</code></pre>
 <code>conversion-fail</code> chunk, R produced <code>NA</code> and a
 warning instead of stopping with an error.</p>
 <ul>
-<li><p>Why do you think R is designed to give a warning here rather than
-crashing the whole script?</p>
+<li>Why do you think R is designed to give a warning here rather than
+crashing the whole script?</li>
+</ul>
 <p>R gives a warning so that the rest of the program can be executed
 even if a value cannot be converted. It also prevents data loss by just
-giving a warning rather than crashing.</p></li>
-<li><p>What are the risks of this behavior if you don’t read your
-warnings?</p></li>
+giving a warning rather than crashing.</p>
+<ul>
+<li>What are the risks of this behavior if you don’t read your
+warnings?</li>
 </ul>
 <p>It can affect calculations and lead to incorrect outputs, which
 causes errors in the results.</p>

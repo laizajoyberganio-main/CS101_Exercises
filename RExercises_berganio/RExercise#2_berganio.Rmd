@@ -56,7 +56,7 @@ a%/%b
 
 [1] 1024
 
-**Question #1:** Run 17 / 5, 17 %% 5, and 17 %/% 5 side by side. In your
+**Question #1:** Run `17 / 5`, `17 %% 5`, and `17 %/% 5` side by side. In your
 own words, explain how these three results relate to each other
 mathematically.
 
@@ -144,19 +144,20 @@ mode(v)
 `typeof(x)` and `typeof(y)` give different answers. Explain the
 difference in your own words.
 
-`typeof()` and `typeof(y)` give different answers because in x, 42 is
+`typeof(x)` and `typeof(y)` give different answers because in x, 42 is
 treated as a decimal, while in y, 42 is treated as an integer due to the
 'L' suffix. The 'L' suffix forces R to store the number as a whole
-integer. If the stored value doesnt have an L, R stores the number as a
+integer. If the stored value doesn't have an L, R stores the number as a
 decimal.
 
 **Question #4:** Is `typeof()` ever different from `class()` and from
 `mode()` for the same object? Look at your results above and explain any
 case where this happens (or, if you did not see one, explain what you
-would expect for a `matrix` or `factor`).\
+would expect for a `matrix` or `factor`).
+
 Yes. In x, its type is a "double", but its class and mode are "numeric".
-This is because typeof() identifies the objects' storage type, class()
-identifies the object class, and mode() identifies its general data
+This is because `typeof()` identifies the objects' storage type, `class()`
+identifies the object class, and `mode()` identifies its general data
 category.
 
 ------------------------------------------------------------------------
@@ -213,9 +214,7 @@ Warning message: NAs introduced by coercion
 - Why do you think R is designed to give a warning here rather than
   crashing the whole script?
 
-  R gives a warning so that the rest of the program can be executed even
-  if a value cannot be converted. It also prevents data loss by just
-  giving a warning rather than crashing.
+R gives a warning so that the rest of the program can be executed even if a value cannot be converted. It also prevents data loss by just giving a warning rather than crashing.
 
 - What are the risks of this behavior if you don’t read your warnings?
 
