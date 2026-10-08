@@ -68,7 +68,7 @@ which divides the values but only takes the integer
 running the code. Were you correct? If not, explain what you
 misunderstood.
 
-The output of \> 10 %% 3 is 1 and 10 %/% is 3. These are correct.
+The output of 10 %% 3 is 1 and 10 %/% is 3. These are correct.
 
 ------------------------------------------------------------------------
 
@@ -169,18 +169,18 @@ num_string <- "123"
 # TODO: Convert num_string to a numeric value using as.numeric()
 # Then check its type with typeof(), class(), and mode()
 
-as.numeric(num_string)
+num_string <- as.numeric(num_string)
 
 typeof(num_string)
 class(num_string)
 mode(num_string)
 ```
 
-[1] "character"
+[1] "double"
 
-[1] "character"
+[1] "numeric"
 
-[1] "character"
+[1] "numeric"
 
 ```{r}
 # TODO: Convert the number 0 and the number 1 to logical using as.logical()
@@ -219,16 +219,14 @@ Warning message: NAs introduced by coercion
 
 - What are the risks of this behavior if you don’t read your warnings?
 
-  It can affect calculations and lead to incorrect outputs, which causes
-  errors in the results.
+It can affect calculations and lead to incorrect outputs, which causes errors in the results.
 
 **Question #6:** `as.logical(0)` and `as.logical(1)` convert to `FALSE`
 and `TRUE`.
 
 - What do you think `as.logical(2)` and as.logical(-1)\` will produce?
 
-  I think both will produce `TRUE` because any nonzero number, whether
-  positive or negative, is treated as `TRUE` in R.
+I think both will produce `TRUE` because any nonzero number, whether positive or negative, is treated as `TRUE` in R.
 
 - Test it, then explain the rule R seems to be following.
 
@@ -237,9 +235,7 @@ and `TRUE`.
   as.logical(-1)
   ```
 
-  R seems to be following a rule that a zero is converted to `FALSE`,
-  while any number other than zero is converted to `TRUE`, whether the
-  number is positive or negative.
+R seems to be following a rule that a zero is converted to `FALSE`, while any number other than zero is converted to `TRUE`, whether the number is positive or negative.
 
 ------------------------------------------------------------------------
 
@@ -301,10 +297,7 @@ without first converting `age` to a string.
   make this work, and how it relates to the type conversions you
   practiced in Part C.
 
-  No, it did not cause an error because `paste0()` automatically
-  converts the number into a character string before combining it with
-  the text. This is similar to using `as.character()` to convert other
-  data types into strings.
+No, it did not cause an error because `paste0()` automatically converts the number into a character string before combining it with the text. This is similar to using as.character()` to convert other data types into strings.
 
 ------------------------------------------------------------------------
 
@@ -333,8 +326,9 @@ as.numeric("5")+5
 - Based on what you’ve learned about R’s data types in this lab, why do
   you think R requires an explicit conversion instead of guessing what
   the programmer meant?
+  
+R does not guess because it follows the data type that was given. Since `"5"` is a character and `5` is numeric, they are treated differently, so an explicit conversion is needed.
 
-*(Your answer here)*
 
 **Question #10:** Suppose a classmate writes a script that reads a
 column of “numbers” from a text file. The column looks numeric, but when
@@ -343,4 +337,4 @@ lab (types, `typeof()`/`class()`/`mode()`, conversion, warnings), write
 a short paragraph explaining what likely went wrong and the steps you’d
 take to diagnose and fix it.
 
-*(Your answer here)*
+The column was probably stored as character instead of numeric. I would check its type using `typeof()` or `class()`, then use `as.numeric()` to convert it. I would also check for warnings because some values might turn into `NA`.

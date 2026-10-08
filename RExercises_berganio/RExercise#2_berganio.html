@@ -401,8 +401,7 @@ operator which divides the values but only takes the integer</p>
 <p><strong>Question #2:</strong> Predict the output of
 <code>10 %% 3</code> and <code>10 %/% 3</code> <em>before</em> running
 the code. Were you correct? If not, explain what you misunderstood.</p>
-<p>The output of &gt; 10 %% 3 is 1 and 10 %/% is 3. These are
-correct.</p>
+<p>The output of 10 %% 3 is 1 and 10 %/% is 3. These are correct.</p>
 <hr />
 </div>
 <div id="part-b-basic-data-types-typeof-class-and-mode" class="section level3">
@@ -491,17 +490,17 @@ category.</p>
 # TODO: Convert num_string to a numeric value using as.numeric()
 # Then check its type with typeof(), class(), and mode()
 
-as.numeric(num_string)</code></pre>
-<pre><code>## [1] 123</code></pre>
-<pre class="r"><code>typeof(num_string)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
+num_string &lt;- as.numeric(num_string)
+
+typeof(num_string)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
 <pre class="r"><code>class(num_string)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre class="r"><code>mode(num_string)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<p>[1] “character”</p>
-<p>[1] “character”</p>
-<p>[1] “character”</p>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>[1] “double”</p>
+<p>[1] “numeric”</p>
+<p>[1] “numeric”</p>
 <pre class="r"><code># TODO: Convert the number 0 and the number 1 to logical using as.logical()
 # What do you get?
 
@@ -531,28 +530,30 @@ crashing the whole script?</p>
 even if a value cannot be converted. It also prevents data loss by just
 giving a warning rather than crashing.</p></li>
 <li><p>What are the risks of this behavior if you don’t read your
-warnings?</p>
-<p>It can affect calculations and lead to incorrect outputs, which
-causes errors in the results.</p></li>
+warnings?</p></li>
 </ul>
+<p>It can affect calculations and lead to incorrect outputs, which
+causes errors in the results.</p>
 <p><strong>Question #6:</strong> <code>as.logical(0)</code> and
 <code>as.logical(1)</code> convert to <code>FALSE</code> and
 <code>TRUE</code>.</p>
 <ul>
-<li><p>What do you think <code>as.logical(2)</code> and as.logical(-1)`
-will produce?</p>
+<li>What do you think <code>as.logical(2)</code> and as.logical(-1)`
+will produce?</li>
+</ul>
 <p>I think both will produce <code>TRUE</code> because any nonzero
 number, whether positive or negative, is treated as <code>TRUE</code> in
-R.</p></li>
+R.</p>
+<ul>
 <li><p>Test it, then explain the rule R seems to be following.</p>
 <pre class="r"><code>as.logical(2)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>as.logical(-1)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre></li>
+</ul>
 <p>R seems to be following a rule that a zero is converted to
 <code>FALSE</code>, while any number other than zero is converted to
-<code>TRUE</code>, whether the number is positive or negative.</p></li>
-</ul>
+<code>TRUE</code>, whether the number is positive or negative.</p>
 <hr />
 </div>
 <div id="part-d-strings-paste-and-paste0" class="section level3">
@@ -596,15 +597,14 @@ chunk, you combined a character string with a numeric variable
 (<code>age</code>) using <code>paste0()</code> without first converting
 <code>age</code> to a string.</p>
 <ul>
-<li><p>Did this cause an error? Explain what <code>paste0()</code> does
+<li>Did this cause an error? Explain what <code>paste0()</code> does
 internally to make this work, and how it relates to the type conversions
-you practiced in Part C.</p>
+you practiced in Part C.</li>
+</ul>
 <p>No, it did not cause an error because <code>paste0()</code>
 automatically converts the number into a character string before
-combining it with the text. This is similar to using
-<code>as.character()</code> to convert other data types into
-strings.</p></li>
-</ul>
+combining it with the text. This is similar to using as.character()` to
+convert other data types into strings.</p>
 <hr />
 </div>
 <div id="part-e-critical-thinking-challenge" class="section level3">
@@ -627,7 +627,9 @@ an error. R does not.</p>
 do you think R requires an explicit conversion instead of guessing what
 the programmer meant?</li>
 </ul>
-<p><em>(Your answer here)</em></p>
+<p>R does not guess because it follows the data type that was given.
+Since <code>&quot;5&quot;</code> is a character and <code>5</code> is numeric,
+they are treated differently, so an explicit conversion is needed.</p>
 <p><strong>Question #10:</strong> Suppose a classmate writes a script
 that reads a column of “numbers” from a text file. The column looks
 numeric, but when they try <code>sum()</code> on it, R throws an error.
@@ -635,7 +637,11 @@ Based on everything in this lab (types,
 <code>typeof()</code>/<code>class()</code>/<code>mode()</code>,
 conversion, warnings), write a short paragraph explaining what likely
 went wrong and the steps you’d take to diagnose and fix it.</p>
-<p><em>(Your answer here)</em></p>
+<p>The column was probably stored as character instead of numeric. I
+would check its type using <code>typeof()</code> or
+<code>class()</code>, then use <code>as.numeric()</code> to convert it.
+I would also check for warnings because some values might turn into
+<code>NA</code>.</p>
 </div>
 
 
