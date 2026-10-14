@@ -1,0 +1,113 @@
+---
+title: "RExercise#3_berganio"
+author: "Laiza Joy Berganio"
+date: "2026-10-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##  Part A — Creating Vectors: `c()`, `seq()`, `rep()`
+
+```{r}
+# TODO: Create a numeric vector called scores containing: 88, 92, 79, 95, 84
+scores <- c(88L,92L,79L,95L,84L)
+
+# Then create a character vector called subjects containing:
+# "Math", "Science", "English", "History", "PE"
+subjects <- c("Math", "Science", "English", "History", "PE")
+
+```
+
+```{r}
+# TODO: Use seq() to create a vector called odds containing odd numbers
+# from 1 to 19 (hint: use the "by" argument)
+odds <- seq(1,19, by=2)
+
+# TODO: Use seq() with length.out to create a vector of exactly 5 evenly
+# spaced numbers between 0 and 1
+even <- seq(0,1, length.out=5)
+
+```
+
+```{r}
+# TODO: Use rep() to create a vector that repeats the value "A" 4 times
+rep("A", times = 4)
+
+# TODO: Use rep() with the "each" argument to turn c("A", "B") into
+# "A" "A" "B" "B" (each element repeated twice, in order)
+rep(c("A", "B"), each = 2)
+
+# TODO: Use rep() with the "times" argument to turn c("A", "B") into
+# "A" "B" "A" "B" (the whole sequence repeated twice)
+rep(c("A", "B"), times = 2)
+
+```
+
+***Question #1:*** Set up a vector named age, consisting of `15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8`
+
+```{r}
+age <- c(15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8)
+```
+
+a\. How many data points?
+
+There are 32 data points in the vector age.
+
+b\. Find the reciprocal of age?
+
+c\. Assign also `new_age <- c(age, 0, age)` What happens to `new_age`?
+
+d\. Find the minimum and the maximum value of age
+
+**Question #2:**
+
+- `rep(c("A","B"), each = 2)` and `rep(c("A","B"), times = 2)` both produce a vector of length 4, but with different element orders.
+
+- Explain in your own words the difference between `each` and `times`.
+
+**Question #3:**
+
+- Compare `seq(1, 20, by = 2)` with `seq(1, 20, length.out = 5)`. What does each argument (`by` vs `length.out`) control, and when would you use one over the other in a real analysis?
+
+**Question #4:**
+
+a\. Generate a sequence for 20 to 60. Name the vector as `vec_num`
+
+b\. Get the mean for `vec_num`
+
+c\. Get the sum for `vec_num`
+
+d\. How many data points are there in `vec_num`?
+
+------------------------------------------------------------------------
+
+## Part B — Subsetting (Accessing) Vectors
+```{r}
+grades <- c(88, 92, 79, 95, 84)
+names(grades) <- c("Math", "Science", "English", "History", "PE")
+
+# TODO: Access the 3rd element of grades using positional indexing
+grades[3]
+
+# TODO: Access the 1st abd 4th element of grades using positional indexing
+grades [c(1,4)]
+
+# TODO: Access "Science" and "PE" together using their names
+grades[c("Science", "PE")]
+
+```
+```{r}
+# TODO: Return all elements of grades EXCEPT the 1st and 4th, using
+# negative indexing, e.g. grades[-c(...)]
+grades[-c(-1,-4)]
+```
+```{r}
+# TODO: Use a logical condition to return only the grades that are
+# greater than or equal to 85 (hint: grades[grades >= 85])
+grades[grades >= 85]
+```
+
+
