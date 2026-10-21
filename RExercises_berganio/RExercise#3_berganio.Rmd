@@ -1,5 +1,5 @@
 ---
-title: "RExercise#3_berganio"
+title: "R Lab: Data Structures - Vectors and Lists"
 author: "Laiza Joy Berganio"
 date: "2026-10-14"
 output: html_document
@@ -57,9 +57,9 @@ age
 
 a.  How many data points?
 
-    ```{r}
-    length(age)
-    ```
+```{r}
+length(age)
+```
 
 There are 34 data points in the vector age.
 
@@ -69,7 +69,7 @@ b.  Find the reciprocal of age?
 1 / age
 ```
 
-This calculates the reciprocal of each value in `age`
+This calculates the reciprocal of each value in `age`.
 
 c.  Assign also `new_age <- c(age, 0, age)` What happens to `new_age`?
 
@@ -100,6 +100,8 @@ The each argument repeats each element before moving to the next one, while time
 **Question #3:**
 
 - Compare `seq(1, 20, by = 2)` with `seq(1, 20, length.out = 5)`. What does each argument (`by` vs `length.out`) control, and when would you use one over the other in a real analysis?
+
+  The `by` argument sets the exact step size between numbers, while `length.out` sets the exact total of count of numbers. I would use `by` when I know the specific intervals to skip, and `length.out` when I want to split a range in an even number of pieces.
 
 **Question #4:**
 
@@ -210,7 +212,7 @@ short <- c(1, 0)
 
 # TODO: Add z and short together and print the result. Run this even
 # though the vectors are different lengths -- observe what R does.
-z + y
+z + short
 ```
 
 ```{r}
@@ -230,9 +232,13 @@ append(fruits, "kiwi", after = 1)
 
 - Explain, in your own words, what R’s “recycling rule” did to `short` to make the addition work.
 
+  R's "recycling rule" made the lengths of z and short match, since short was too short, R automatically re-used its elements from the beginning .
+
 **Question #9:** Now try adding `z` (length 6) to `c(1, 0, 1)` (length 3) instead. Does it work cleanly?
 
 - Then try adding `z` to `c(1, 0, 1, 1)` (length 4). Compare the warning (or lack of one) in each case, and explain what condition determines whether R recycles silently versus with a warning.
+
+  R recycles silently when the shorter object length is a divisible of the longer length. In `z+c(1,0,1)`, the length of z is 6, and the length of `c(1,0,1)` is 3, 3 is a divisible of 6. Therefore, R recycles the shorter vector. But since `c(1,0,1,1)` is length 4, it is not a divisible of 6. Hence, it triggers a warning message "longer object length is not a multiple of shorter object length."
 
 ------------------------------------------------------------------------
 
@@ -283,11 +289,15 @@ class(student["grades"])
 class(student[["grades"]])
 ```
 
+`[ ]` returns the same data type as the original object, a list returns a list. While `[ [ ] ]` returns the data stored inside that specific position.
+
 **Question #11:**
 
 - Why do you think R makes a distinction between `[ ]` and `[[ ]]` for lists, but a vector only needs `[ ]`? Think about what a list can contain that a vector cannot.
 
-  ------------------------------------------------------------------------
+Vectors can only hold one data type, so the single brackets are enough to pull out flat elements. Lists hold completely different and complex structures inside a single slot. R uses double brackets for lists to directly interact with the complex inner data structures.
+
+------------------------------------------------------------------------
 
 ## Part E — Critical Thinking Challenge
 
@@ -322,7 +332,7 @@ R first checks which items are in stock, then uses those results to choose the m
 
 **Question #13:**
 
-- Suppose a classmate stores related data as three *separate, unconnected* vectors (`item_names`, `item_prices`, `item_stock`) instead of grouping them into one list like `inventory`. What risks or bugs could this create as the dataset grows or gets reordered? Argue for or against using a list (or, later, a data frame) instead of separate vectors.
+- Suppose a classmate stores related data as three *separate, unconnected* vectors (`item_names`, `item_prices`, `item_stock`) instead of grouping them into one list like `inventory`. What risks or bugs could this create as the data set grows or gets reordered? Argue for or against using a list (or, later, a data frame) instead of separate vectors.
 
 Using separate vectors can cause problems if the items get rearranged because their names, prices, and stock status might not match anymore. Using a list or data frame keeps the information organized and makes it easier to manage the data.
 
